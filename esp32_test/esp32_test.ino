@@ -6,8 +6,8 @@
 constexpr uint8_t PWM_PIN = 18;
 constexpr uint8_t MONITOR_PIN = 19;  // Verify GPIO19 exists on your ESP32 board.
 constexpr uint8_t PWM_BITS = 8;
-constexpr uint32_t MIN_HZ = 24000;
-constexpr uint32_t MAX_HZ = 26000;
+constexpr uint32_t MIN_HZ = 2400;
+constexpr uint32_t MAX_HZ = 2600;
 constexpr uint32_t HOP_INTERVAL_MS = 10;
 constexpr uint32_t REPORT_INTERVAL_MS = 1000;
 
