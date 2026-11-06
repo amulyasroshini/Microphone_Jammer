@@ -1,0 +1,36 @@
+LTSPICE SIMULATION COMMANDS: 5 V / ONE PIEZO
+
+1. Keep V1 = 5 V, 100 ohm parallel with C1 = 20 nF, 10 kohm gate to
+   ground, source grounded. 20 nF is only an illustrative assumption.
+2. Replace B1 (behavioural source) with a regular voltage source. Connect
+   its positive to the gate and negative to ground.
+3. Right-click that source > Advanced > PWL FILE and select the file
+   random_25khz_pwl.txt in this project folder. If you enter a source value
+   directly, use:
+
+PWL FILE="C:\Users\amuly\OneDrive\Documents\ChatGPT\Analog Mini Project\random_25khz_pwl.txt"
+
+4. Set the transient simulation directive to:
+
+.tran 0 10m 0 100n
+
+5. Plot the gate, drain, and differential voltage across the capacitor.
+   Zoom in and compare the spacing between rising edges. Frequencies are
+   randomly selected once per cycle between 24 and 26 kHz, 0 to 3.3 V,
+   approximately 50% duty, with 100 ns edges. This is a saved pseudorandom
+   pattern, so it is identical on each run. The file contains over 10 ms;
+   do not simulate beyond its end unless a new waveform is generated.
+
+Fixed 25 kHz comparison: replace source value with
+PULSE(0 3.3 0 100n 100n 20u 40u)
+
+Single 24-to-26 kHz sweep: replace voltage source with a behavioural source
+and set value to
+V=if(sin(2*pi*(24000*time+100000*time*time))>0,3.3,0)
+The sweep runs once over 10 ms; beyond 10 ms it keeps rising.
+
+The simulation models neither acoustic output nor microphone response. The
+real piezo bandwidth and capacitance are unknown, and 24-26 kHz is an example,
+not a verified effective range. Real ESP32 code remains fixed at 25 kHz.
+For hardware, confirm piezo voltage rating and electrode connections; the
+100 ohm resistor needs at least 0.5 W on a regulated 5 V supply.
