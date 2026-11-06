@@ -31,6 +31,7 @@ The sweep runs once over 10 ms; beyond 10 ms it keeps rising.
 
 The simulation models neither acoustic output nor microphone response. The
 real piezo bandwidth and capacitance are unknown, and 24-26 kHz is an example,
-not a verified effective range. Real ESP32 code remains fixed at 25 kHz.
+not a verified effective range. Real ESP32 code now hops every 10 ms; this is slower than the per-cycle simulation.
 For hardware, confirm piezo voltage rating and electrode connections; the
 100 ohm resistor needs at least 0.5 W on a regulated 5 V supply.
+
