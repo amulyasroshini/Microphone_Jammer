@@ -1,0 +1,34 @@
+5 V ONE-PIEZO EXPERIMENT — PROVISIONAL, NOT A VERIFIED JAMMER
+
+Do not connect the piezo until its main/feedback electrode identification and
+voltage rating have been verified. Color identification from the photo is
+only tentative: green main electrode, blue brass, yellow feedback. Verify the
+2N7000 pinout from your exact part's manufacturer datasheet.
+
+ESP32 development board: normal 5 V USB power. GPIO18 generates 25 kHz,
+0-3.3 V, 50% duty, using esp32_test/esp32_test.ino (Arduino ESP32 core 3.x).
+Separate regulated 5 V supply for piezo stage. Connect supply negative to
+ESP32 GND. Do not connect separate supply positive to the ESP32 USB/5 V pin
+while USB-powered; do not connect 5 V to GPIO or 3V3 pin.
+
+CONNECTIONS
+ESP32 GPIO18          -> 2N7000 gate
+10 kOhm resistor      -> between gate and common ground
+2N7000 source         -> common ground
+ESP32 GND             -> common ground
+5 V supply negative   -> common ground
+5 V supply positive   -> 100 ohm resistor first end and piezo main electrode
+100 ohm other end     -> 2N7000 drain and piezo brass electrode
+Piezo feedback        -> leave disconnected and insulate
+Unknown diode         -> leave disconnected
+Three remaining discs -> leave disconnected
+
+The resistor is parallel to the piezo. It must be at least 0.5 W: 5 V across
+100 ohm gives 50 mA and 0.25 W continuously, so a 0.25 W part has no margin.
+A 3.3 V gate may not switch a particular 2N7000 well. 25 kHz is not itself
+too fast, but actual circuit waveform and current are unknown. A piezo may
+ring above 5 V and supply current limiting cannot prevent every transient.
+Do not raise the voltage or connect additional discs without ratings and a
+waveform measurement. Do not claim ultrasonic generation or interference
+without measuring. Avoid close exposure of people and animals to ultrasound.
+The resistor circuit wastes power and this setup may yield weak/no interference.

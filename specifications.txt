@@ -1,0 +1,42 @@
+ONE-PIEZO EXPERIMENT: COMPLETE CONNECTION TABLE
+
+This is a preliminary test, not a verified final jammer. Before assembly,
+confirm the exact piezo electrode assignments, piezo voltage rating, resistor
+power rating, and 2N7000 manufacturer pinout. Photo-based color identification
+is tentative: blue appears to be brass, green main electrode, yellow feedback.
+
+FROM                                  TO
+ESP32 USB connector                   5 V USB power/computer
+ESP32 GPIO18                          2N7000 gate
+10 kOhm resistor, end 1               2N7000 gate
+10 kOhm resistor, end 2               Common ground
+2N7000 source                         Common ground
+ESP32 GND                             Common ground
+3.3 V test supply negative            Common ground
+3.3 V test supply positive            100 Ohm resistor end 1
+3.3 V test supply positive            Main electrode (apparently GREEN)
+100 Ohm resistor end 2                2N7000 drain
+Brass backing (apparently BLUE)       2N7000 drain
+Feedback electrode (apparently YELLOW) Leave unconnected; insulate end
+Unidentified diode                    Not connected
+Other three piezos                    Not connected
+
+The 100 ohm resistor and main piezo are in parallel between +3.3 V and drain.
+100 ohm resistor must be rated >= 0.25 W; maximum steady on-state dissipation
+is 3.3^2 / 100 = 0.109 W. ESP32 GPIO must never receive 5 V. Use a separate
+regulated 3.3 V supply with initial current limit 50 mA, and common ground.
+If you have a second 100 ohm resistor, put it between GPIO18 and gate; the
+10 kohm resistor remains connected between gate and ground.
+
+Arduino ESP32 core 3.x: load esp32_test/esp32_test.ino. GPIO18 outputs
+25 kHz at 50% duty. Check gate and drain voltages with an oscilloscope.
+Piezo resonance may cause drain voltage to exceed the supply; a supply current
+limit does not prevent all transient peaks. Stop if voltage exceeds component
+ratings, or parts heat. The 2N7000 threshold does not guarantee its switching
+performance at 3.3 V gate drive. Unknown piezo rating and impedance mean a
+safe final voltage, output level and microphone interference are not assured.
+Do not expose ears or animals to close-range ultrasound. Identify components
+and measure waveforms before increasing voltage or connecting more piezos.
+
+https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+https://www.st.com/resource/en/datasheet/2n7000.pdf

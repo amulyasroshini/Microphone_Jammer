@@ -1,0 +1,25 @@
+3.3 V ONE-PIEZO TEST (PROVISIONAL)
+
+USB powers the ESP32 development board. If the board documentation confirms
+its 3V3 pin supplies external loads and its regulator has enough spare
+capacity, connect 3V3 to the piezo and 100 ohm resistor supply node. The 3V3
+pin is a hardware power rail, not a GPIO, and requires no code to turn it on.
+Never use a GPIO as the piezo supply. Do not connect an external 3.3 V supply
+in parallel with that pin. Alternatively use a separate regulated 3.3 V supply
+for the piezo; connect only its negative to ESP32 GND.
+
+GPIO18 -> MOSFET gate; gate -> 10 kohm -> ESP32 GND; source -> ESP32 GND.
+3V3 -> 100 ohm >=0.25 W -> drain. Piezo main electrode -> 3V3; piezo brass
+-> drain; leave feedback electrode insulated and disconnected. Do not connect
+the other discs or unidentified diode. Green/main, blue/brass, yellow/feedback
+are tentative photo-based identifications. Confirm using the datasheet, as well
+as the piezo voltage rating and 2N7000 manufacturer pinout before connecting.
+
+100 ohm can draw up to 33 mA continuously while the MOSFET is on; power can
+reach 0.109 W. Transient piezo currents and ESP32 consumption are additional.
+A weak regulator may cause resets or overheating. 3.3 V gate drive may not
+fully enhance a particular 2N7000. Electrical waveform and interference are
+unverified; piezo voltage can ring above the supply. Do not increase voltage
+or add more piezos without suitable component ratings and measurements.
+Code esp32_test/esp32_test.ino generates 25 kHz PWM on GPIO18; a constant
+supply is provided by the board's 3V3 pin, not by a software-controlled GPIO.

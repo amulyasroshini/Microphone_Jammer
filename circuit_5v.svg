@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="850" viewBox="0 0 1400 850">
+<rect width="1400" height="850" fill="white"/>
+<g font-family="Arial, sans-serif" fill="#132238">
+<text x="40" y="48" font-size="30" font-weight="bold">5 V piezo driver: provisional one-disc experiment</text>
+<text x="40" y="80" font-size="19">Confirm piezo voltage rating and electrode identities before connecting.</text>
+<rect x="60" y="190" width="260" height="230" rx="8" fill="#eaf3ff" stroke="#132238" stroke-width="3"/>
+<text x="95" y="230" font-size="24" font-weight="bold">ESP32 dev board</text><text x="95" y="275" font-size="20">USB: 5 V power</text><text x="95" y="325" font-size="20">GPIO18 (3.3 V)</text><text x="95" y="385" font-size="20">GND</text>
+<text x="900" y="155" font-size="22">+5 V regulated DC</text><text x="900" y="180" font-size="17">Separate piezo supply</text>
+<text x="680" y="235" font-size="20">100 Ω, ≥ 0.5 W</text><text x="1065" y="235" font-size="19">Piezo: main*</text><text x="1065" y="280" font-size="19">Piezo: brass*</text>
+<text x="430" y="395" font-size="20">10 kΩ</text><text x="640" y="315" font-size="19">G</text><text x="705" y="276" font-size="19">D</text><text x="705" y="425" font-size="19">S</text><text x="760" y="370" font-size="21">2N7000</text>
+<text x="920" y="572" font-size="19">5 V supply negative</text><text x="920" y="600" font-size="19">and ESP32 GND</text>
+<text x="40" y="680" font-size="20">* Photo suggests green = main, blue = brass, yellow = feedback; verify.</text>
+<text x="40" y="715" font-size="20">Leave feedback wire insulated and unconnected; verify MOSFET pinout.</text>
+<text x="40" y="750" font-size="20">GPIO is 3.3 V only. No 5 V connection to GPIO or ESP32 3V3 pin.</text>
+<text x="40" y="785" font-size="20">5 V piezo rating and resistor wattage must be confirmed; no performance guarantee.</text>
+</g>
+<g fill="none" stroke="#132238" stroke-width="4">
+<path d="M320 318 H680 M320 378 H360 V550 H900 M500 318 V350 M500 430 V550"/>
+<rect x="485" y="350" width="30" height="80"/><path d="M700 290 V410 M680 300 V400 M700 310 H720 V270 M700 390 H720 V550"/>
+<path d="M720 270 H1000 M1000 150 V205 M1000 255 V270 M1000 175 H1200 V220 M1200 250 V270 H1000 M720 550 H900 V570"/>
+<rect x="985" y="205" width="30" height="50"/><path d="M1180 220 H1220 M1180 250 H1220 M880 570 H920 M888 580 H912 M894 590 H906"/>
+</g><g fill="#132238"><circle cx="500" cy="318" r="6"/><circle cx="720" cy="270" r="6"/><circle cx="1000" cy="175" r="6"/><circle cx="1000" cy="270" r="6"/><circle cx="720" cy="550" r="6"/></g></svg>
+
