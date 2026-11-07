@@ -1,6 +1,6 @@
 # ESP32 piezo transmitter experiment
 
-This project explores a 2N7000 MOSFET driver for a nominal 25 kHz piezo, with the goal of investigating microphone interference. One piezo produced an audible buzz during a 2.5 kHz-range physical test. Ultrasonic emission, sound level, and microphone interference have **not been verified**.
+This project explores a 2N7000 MOSFET driver for a nominal 25 kHz piezo, with the goal of investigating microphone interference. One piezo produced an audible buzz during a 2.5 kHz-range physical test. There is a slight distortion when operating with the ultrasonic range. 
 
 ## Current physical circuit
 
