@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+<rect width="1500" height="900" fill="white"/>
+<g font-family="Arial, sans-serif" fill="#17243a">
+<text x="45" y="55" font-size="34" font-weight="bold">ESP32 piezo driver — direct 9 V battery</text>
+<text x="45" y="92" font-size="20">Physical counterpart of the LTspice circuit; one piezo, no voltage divider.</text>
+<rect x="55" y="205" width="285" height="315" rx="10" fill="#edf5ff" stroke="#17243a" stroke-width="3"/>
+<text x="85" y="247" font-size="26" font-weight="bold">ESP32 board</text>
+<text x="85" y="289" font-size="20">USB: board power</text>
+<text x="85" y="352" font-size="21">GPIO18</text>
+<text x="85" y="412" font-size="21">GPIO19 (monitor)</text>
+<text x="85" y="477" font-size="21">GND</text>
+<text x="1030" y="165" font-size="25" font-weight="bold">Battery +9 V</text>
+<text x="963" y="235" font-size="20" text-anchor="end">3.3 kΩ</text>
+<text x="1218" y="235" font-size="20">Piezo: main*</text>
+<text x="1218" y="300" font-size="20">Piezo: brass*</text>
+<text x="565" y="430" font-size="20">10 kΩ</text>
+<text x="755" y="352" font-size="20">G</text><text x="820" y="302" font-size="20">D</text><text x="820" y="443" font-size="20">S</text><text x="885" y="385" font-size="24">2N7000</text>
+<text x="920" y="565" font-size="20">Common GND: battery − and ESP32 GND</text>
+<text x="45" y="695" font-size="21">* Confirm main / brass / feedback electrodes. Insulate the unused feedback wire.</text>
+<text x="45" y="730" font-size="21">Confirm piezo voltage rating and 2N7000 pinout before applying power.</text>
+<text x="45" y="765" font-size="21">The 3.3 kΩ resistor is parallel to the piezo; it does not limit piezo current.</text>
+<text x="45" y="800" font-size="21">GPIO19 connects only to the gate, never to the drain or 9 V rail.</text>
+<text x="45" y="842" font-size="19">Simulation uses 2N7002 and 20 nF; physical piezo and acoustic output are not verified.</text>
+</g>
+<g stroke="#17243a" stroke-width="4" fill="none" stroke-linecap="square">
+<!-- ESP32 gate and monitor -->
+<path d="M340 345 H765 M340 405 H390 V345 M540 345 V375 M540 445 V555"/>
+<rect x="524" y="375" width="32" height="70"/>
+<!-- MOSFET gate, drain, source -->
+<path d="M780 312 V418 M805 310 V420 M805 325 H835 V280 M805 405 H835 V555"/>
+<!-- upper and lower load rails -->
+<path d="M835 280 H1200 M1000 155 V205 M1000 265 V280 M1000 180 H1200 V220 M1200 255 V280"/>
+<rect x="982" y="205" width="36" height="60"/>
+<!-- piezo capacitor symbol -->
+<path d="M1180 220 H1220 M1180 255 H1220"/>
+<!-- common ground rail -->
+<path d="M340 470 H385 V555 H1100 M1100 555 V585 M1080 585 H1120 M1087 595 H1113 M1094 605 H1106"/>
+</g>
+<g fill="#17243a"><circle cx="390" cy="345" r="6"/><circle cx="540" cy="345" r="6"/><circle cx="540" cy="555" r="6"/><circle cx="835" cy="555" r="6"/><circle cx="1000" cy="180" r="6"/><circle cx="1000" cy="280" r="6"/></g>
+</svg>
