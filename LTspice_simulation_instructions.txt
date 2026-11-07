@@ -8,7 +8,7 @@ LTSPICE SIMULATION COMMANDS: 5 V / ONE PIEZO
    random_25khz_pwl.txt in this project folder. If you enter a source value
    directly, use:
 
-PWL FILE="C:\Users\amuly\OneDrive\Documents\ChatGPT\Analog Mini Project\random_25khz_pwl.txt"
+PWL FILE="path"
 
 4. Set the transient simulation directive to:
 
